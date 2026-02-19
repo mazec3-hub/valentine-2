@@ -45,13 +45,19 @@
     </style>
 </head>
 <body>
-    <h1>Happy Valentine's Day!</h1>
-    <p>Do you love Valentine's Day?</p>
-    <a class="button" href="#" onclick="alert('Thank you for saying YES!')">YES</a>
+    <h1>Chúc mưng ngày Valentine!</h1>
+    <p>Em sẽ làm Valentine của Anh k?</p>
+    <a class="button" href="#" onclick="alert('Cảm ơn e yêu của anh!')">YES</a>
     <button class="button moving-button" disabled>NO</button>
 
     <script>
-        // Optional animations or interactive features can go here
+        const noButton = document.getElementById('noButton');
+
+        noButton.addEventListener('mouseenter', () => {
+            const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        });// Optional animations or interactive features can go here
     </script>
 </body>
 </html>
