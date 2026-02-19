@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day Buttons</title>
+    <title>Valentine's Day Celebration</title>
     <style>
         body {
-            background-color: pink;
-            text-align: center;
+            background-color: #ffcccb;
+            color: #d5006d;
             font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            animation: fadeIn 2s;
         }
         .button {
             background-color: #ff69b4;
@@ -19,28 +25,33 @@
             text-decoration: none;
             display: inline-block;
             font-size: 20px;
-            margin: 10px;
+            margin: 20px;
             cursor: pointer;
             border-radius: 12px;
+            transition: all 0.3s ease;
         }
-        #noButton {
+        .moving-button {
             position: relative;
-            display: inline-block;
+            animation: move 2s infinite alternate;
+        }
+        @keyframes move {
+            0% { left: 0; }
+            100% { left: 20px; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
-    <script>
-        const noButton = document.getElementById('noButton');
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
-            noButton.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-            noButton.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-        });
-    </script>
 </head>
 <body>
     <h1>Happy Valentine's Day!</h1>
-    <button class="button" id="yesButton">YES</button>
-    <button class="button" id="noButton" onclick="event.preventDefault();">NO</button>
+    <p>Do you love Valentine's Day?</p>
+    <a class="button" href="#" onclick="alert('Thank you for saying YES!')">YES</a>
+    <button class="button moving-button" disabled>NO</button>
+
+    <script>
+        // Optional animations or interactive features can go here
+    </script>
 </body>
 </html>
