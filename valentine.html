@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day</title>
+    <title>Valentine's Day Buttons</title>
     <style>
         body {
             background-color: pink;
@@ -11,28 +11,36 @@
             font-family: 'Arial', sans-serif;
         }
         .button {
-            padding: 10px 20px;
-            font-size: 20px;
-            color: white;
-            background-color: red;
+            background-color: #ff69b4;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            position: relative;
-            animation: move 2s infinite alternate;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
             margin: 10px;
+            cursor: pointer;
+            border-radius: 12px;
         }
-        @keyframes move {
-            0% { top: 0; }
-            100% { top: -20px; }
+        #noButton {
+            position: relative;
+            display: inline-block;
         }
     </style>
+    <script>
+        const noButton = document.getElementById('noButton');
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            noButton.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            noButton.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+        });
+    </script>
 </head>
 <body>
-
-<h1>Happy Valentine's Day!</h1>
-<button class="button">Be Mine</button>
-<button class="button">Sweetheart</button>
-
+    <h1>Happy Valentine's Day!</h1>
+    <button class="button" id="yesButton">YES</button>
+    <button class="button" id="noButton" onclick="event.preventDefault();">NO</button>
 </body>
 </html>
