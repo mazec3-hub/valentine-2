@@ -34,8 +34,8 @@
     </style>
 </head>
 <body>
-    <h1>Happy Valentine's Day!</h1>
-    <p>Will you be my Valentine?</p>
+    <h1>Chúc mưng ngày Valentine!</h1>
+    <p>Em sẽ làm Valentine của Anh k?</p>
     <button id="yesButton">YES</button>
     <button id="noButton">NO</button>
     <div id="popup" style="display:none;">
@@ -45,7 +45,13 @@
         document.getElementById('yesButton').onclick = function() {
             document.getElementById('popup').style.display = 'block';
             createFallingHearts();
-        };
+        }; const noButton = document.getElementById('noButton');
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            noButton.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            noButton.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+        });
         document.getElementById('noButton').onclick = function() {
             alert('Maybe next time!');
         };
