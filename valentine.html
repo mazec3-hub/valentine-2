@@ -3,55 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day Celebration</title>
+    <title>Valentine's Day</title>
     <style>
         body {
             background-color: #ffcccb;
-            color: #d5006d;
-            font-family: 'Arial', sans-serif;
             text-align: center;
-            padding: 50px;
+            overflow: hidden;
         }
-        h1 {
-            font-size: 3em;
-            animation: fadeIn 2s;
+        .heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: red;
+            animation: floating 6s ease-in-out infinite;
         }
-        .button {
-            background-color: #ff69b4;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 20px;
-            margin: 20px;
-            cursor: pointer;
-            border-radius: 12px;
-            transition: all 0.3s ease;
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
-        .moving-button {
-            position: relative;
-            animation: move 2s infinite alternate;
+        .falling-heart {
+            position: absolute;
+            animation: fall 5s linear infinite;
         }
-        @keyframes move {
-            0% { left: 0; }
-            100% { left: 20px; }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @keyframes fall {
+            0% { top: -10%; opacity: 1; }
+            100% { top: 100%; opacity: 0; }
         }
     </style>
 </head>
 <body>
     <h1>Happy Valentine's Day!</h1>
-    <p>Do you love Valentine's Day?</p>
-    <a class="button" href="#" onclick="alert('Thank you for saying YES!')">YES</a>
-    <button class="button moving-button" disabled>NO</button>
-
+    <p>Will you be my Valentine?</p>
+    <button id="yesButton">YES</button>
+    <button id="noButton">NO</button>
+    <div id="popup" style="display:none;">
+        <h2>You're so sweet!</h2>
+    </div>
     <script>
-        // Optional animations or interactive features can go here
+        document.getElementById('yesButton').onclick = function() {
+            document.getElementById('popup').style.display = 'block';
+            createFallingHearts();
+        };
+        document.getElementById('noButton').onclick = function() {
+            alert('Maybe next time!');
+        };
+        function createFallingHearts() {
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'falling-heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.innerHTML = '❤️';
+                document.body.appendChild(heart);
+                setTimeout(() => { heart.remove(); }, 5000);
+            }
+        }
     </script>
 </body>
 </html>
