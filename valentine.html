@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Celebration</title>
+    <style>
+        body {
+            background-color: #ffcccb;
+            color: #d5006d;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            animation: fadeIn 2s;
+        }
+        .button {
+            background-color: #ff69b4;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 20px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .moving-button {
+            position: relative;
+            animation: move 2s infinite alternate;
+        }
+        @keyframes move {
+            0% { left: 0; }
+            100% { left: 20px; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Valentine's Day!</h1>
+    <p>Do you love Valentine's Day?</p>
+    <a class="button" href="#" onclick="alert('Thank you for saying YES!')">YES</a>
+    <button class="button moving-button" disabled>NO</button>
+
+    <script>
+        // Optional animations or interactive features can go here
+    </script>
+</body>
+</html>
