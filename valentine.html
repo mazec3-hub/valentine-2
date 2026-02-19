@@ -1,70 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day</title>
-    <style>
-        body {
-            background-color: #ffcccb;
-            text-align: center;
-            overflow: hidden;
-        }
-        .heart {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 50px;
-            color: red;
-            animation: floating 6s ease-in-out infinite;
-        }
-        @keyframes floating {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        .falling-heart {
-            position: absolute;
-            animation: fall 5s linear infinite;
-        }
-        @keyframes fall {
-            0% { top: -10%; opacity: 1; }
-            100% { top: 100%; opacity: 0; }
-        }
-    </style>
+    <script>
+        const noButton = document.getElementById('noButton');
+
+        noButton.addEventListener('mouseenter', () => {
+            const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        });
+    </script>
 </head>
 <body>
-    <h1>Chúc mưng ngày Valentine!</h1>
-    <p>Em sẽ làm Valentine của Anh k?</p>
-    <button id="yesButton">YES</button>
     <button id="noButton">NO</button>
-    <div id="popup" style="display:none;">
-        <h2>You're so sweet!</h2>
-    </div>
-    <script>
-        document.getElementById('yesButton').onclick = function() {
-            document.getElementById('popup').style.display = 'block';
-            createFallingHearts();
-        }; const noButton = document.getElementById('noButton');
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
-            noButton.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-            noButton.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-        });
-        document.getElementById('noButton').onclick = function() {
-            alert('Maybe next time!');
-        };
-        function createFallingHearts() {
-            for (let i = 0; i < 10; i++) {
-                let heart = document.createElement('div');
-                heart.className = 'falling-heart';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.innerHTML = '❤️';
-                document.body.appendChild(heart);
-                setTimeout(() => { heart.remove(); }, 5000);
-            }
-        }
-    </script>
 </body>
 </html>
