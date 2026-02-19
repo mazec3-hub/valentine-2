@@ -53,11 +53,18 @@
     <script>
         const noButton = document.getElementById('noButton');
         document.addEventListener('mousemove', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
-            noButton.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-            noButton.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-        });
+            const min = 200;
+    const max = 200;
+
+    const distance = Math.random() * (max - min) + min;
+    const angle = Math.random() * Math.PI * 2;
+
+    const moveX = Math.cos(angle) * distance;
+    const moveY = Math.sin(angle) * distance;
+
+    noBtn.style.transition = "transform 0.3s ease";
+    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+});
     </script>
 </body>
 </html>
