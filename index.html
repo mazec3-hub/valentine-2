@@ -52,12 +52,12 @@
 
     <script>
         const noButton = document.getElementById('noButton');
-
-        noButton.addEventListener('mouseenter', () => {
-            const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
-            const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
-            noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
-        });// Optional animations or interactive features can go here
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            noButton.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            noButton.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+        });
     </script>
 </body>
 </html>
